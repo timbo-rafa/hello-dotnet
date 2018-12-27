@@ -20,7 +20,9 @@ namespace OdeToFood2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            //For development only, will corrupt when multiple users add restaurants
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            //services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
             services.AddMvc();
         }
 
