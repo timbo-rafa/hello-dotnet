@@ -1,5 +1,9 @@
 ﻿@model OdeToFood2.Models.Restaurant
 
+@{ 
+    ViewBag.Title = Model.Name;
+}
+
 <!-- Can treat not found, but lecturer believes its best on the controller-->
 @*@if(Model == null)
 {
