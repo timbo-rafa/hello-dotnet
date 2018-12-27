@@ -112,6 +112,9 @@ namespace OdeToFood2
             //app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            //node modules
+            app.UseNodeModules(env.ContentRootPath);
+
             app.UseAuthentication();
             app.UseMvc(ConfigureRoutes);
 
@@ -151,16 +154,6 @@ namespace OdeToFood2
                         await next(context);
                     }
                 };
-            });
-                
-                
-
-            app.Run(async (context) =>
-            {
-                //var greeting = configuration["Greeting"];
-                var greeting = greeter.GetMessageOfTheDay();
-                context.Response.ContentType = "text/plain";
-                await context.Response.WriteAsync($"{greeting} : {env.EnvironmentName}");
             });
         }
 
