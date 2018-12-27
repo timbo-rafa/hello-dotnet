@@ -28,10 +28,10 @@ namespace OdeToFood2
                               IGreeter greeter,
                               ILogger<Startup> logger)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+             }
 
             app.Use(next =>
             {
@@ -56,11 +56,28 @@ namespace OdeToFood2
                 Path="/wp"
             });
 
+            app.Use(next =>
+            {
+                return async (context) =>
+                {
+                    if (context.Request.Path.StartsWithSegments("/error"))
+                    {
+                        throw new Exception("Error!");
+                    }
+                    else
+                    {
+                        await next(context);
+                    }
+                };
+            });
+                
+                
+
             app.Run(async (context) =>
             {
                 //var greeting = configuration["Greeting"];
                 var greeting = greeter.GetMessageOfTheDay();
-                await context.Response.WriteAsync(greeting);
+                await context.Response.WriteAsync($"{greeting} : {env.EnvironmentName}");
             });
         }
     }
