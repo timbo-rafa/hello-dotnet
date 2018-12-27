@@ -1,4 +1,14 @@
-﻿@if (User.Identity.IsAuthenticated)
+﻿@*@if (User.Identity.IsAuthenticated)
+{
+    <div>Hello, @User.Identity.Name</div>
+    <a class="btn btn-default" asp-controller="Account" asp-action="Logout"></a>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Login</a>
+}*@
+
+@if (User.Identity.IsAuthenticated)
 {
     foreach (var identity in User.Identities)
     {
@@ -10,4 +20,8 @@
             }
         </ul>
     }
+}
+else
+{
+    <div>You are not logged in</div>
 }

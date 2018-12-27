@@ -7,16 +7,26 @@
     <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+           <div class="navbar-header">
+               <a class="navbar-brand" href="/">OdeToFood</a>
+           </div>
+           <div class="navbar-right">
+               <vc:login-logout></vc:login-logout>
+           </div>
+        </div>
+    </nav>
+    <div class="container">
         @RenderBody()
+        <div>
+            @DateTime.Now.Year
+        </div>
+        <footer>
+            @RenderSection("footer", required: false)
+            <vc:greeter></vc:greeter>
+        </footer>
     </div>
-    <div>
-        @DateTime.Now.Year
-    </div>
-    <footer>
-        @RenderSection("footer", required: false)
-        <vc:greeter></vc:greeter>
-        <vc:login-logout></vc:login-logout>
-    </footer>
+    
 </body>
 </html>
