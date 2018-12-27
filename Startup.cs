@@ -18,6 +18,7 @@ namespace OdeToFood2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,9 +34,10 @@ namespace OdeToFood2
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseFileServer();
+            //app.UseFileServer();
             //app.UseDefaultFiles();
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
 
             app.Use(next =>
             {
