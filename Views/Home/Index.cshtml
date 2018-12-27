@@ -1,11 +1,17 @@
-﻿@model OdeToFood2.Models.Restaurant
+﻿@model IEnumerable<OdeToFood2.Models.Restaurant>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    <h1>Hello from Views/Home/index.cshtml</h1>
-    <h3>@Model.Name</h3>
-    <div>The id is @Model.Id</div>
+    <table>
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.Id</td>
+                <td>@restaurant.Name</td>
+            </tr>
+        }
+    </table>
 </body>
 </html>
