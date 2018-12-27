@@ -31,7 +31,11 @@ namespace OdeToFood2
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-             }
+            }
+
+            app.UseFileServer();
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
 
             app.Use(next =>
             {
