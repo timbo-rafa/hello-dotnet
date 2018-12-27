@@ -27,5 +27,23 @@ namespace OdeToFood2.Controllers
             //return new ObjectResult(model);
             //return Content("Hello from the HomeController!");
         }
+
+        public IActionResult Details(int id)
+        {
+            //return Content(id.ToString());
+            var model = _restaurantData.Get(id);
+
+            if (model == null)
+            {
+                //browser
+                //return View("NotFound");
+                // APIs
+                //return NotFound();
+
+                //redirect
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
     }
 }

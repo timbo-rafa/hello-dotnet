@@ -1,0 +1,12 @@
+﻿@model OdeToFood2.Models.Restaurant
+
+<!-- Can treat not found, but lecturer believes its best on the controller-->
+@*@if(Model == null)
+{
+    <div>Not found</div>
+}*@
+
+<h1>@Model.Name</h1>
+
+<div> ... details ... </div>
+<a asp-action="Index" asp-controller="Home">Home</a>
