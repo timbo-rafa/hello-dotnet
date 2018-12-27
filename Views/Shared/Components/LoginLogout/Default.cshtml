@@ -1,0 +1,13 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    foreach (var identity in User.Identities)
+    {
+        <h3>@identity.Name</h3>
+        <ul>
+            @foreach (var claim in identity.Claims)
+            {
+                <li>@claim.Type - @claim.Value</li>
+            }
+        </ul>
+    }
+}

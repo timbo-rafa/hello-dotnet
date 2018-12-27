@@ -16,19 +16,7 @@
     <footer>
         @RenderSection("footer", required: false)
         <vc:greeter></vc:greeter>
-        @if (User.Identity.IsAuthenticated)
-        {
-            foreach(var identity in User.Identities)
-            {
-                <h3>@identity.Name</h3>
-                <ul>
-                    @foreach (var claim in identity.Claims)
-                    {
-                        <li>@claim.Type - @claim.Value</li>
-                    }
-                </ul>
-            }
-        }
+        <vc:login-logout></vc:login-logout>
     </footer>
 </body>
 </html>
