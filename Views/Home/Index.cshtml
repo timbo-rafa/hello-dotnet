@@ -5,7 +5,13 @@
 }
 
 <h1>All Restaurants</h1>
-<table>
+
+@foreach (var restaurant in Model.Restaurants)
+{
+    @Html.Partial("_Summary", restaurant)
+}
+
+<!--<table>
     @foreach (var restaurant in Model.Restaurants)
     {
         <tr>
@@ -14,7 +20,7 @@
             <td>
                 @*<a href="/home/details/@restaurant.Id">Details</a> *@
 
-                <!-- Old -->
+                
                 @*Html.ActionLink("Go", "Details", new { id=restaurant.Id}) *@
 
                 <a asp-action="Details" asp-route-id="@restaurant.Id">More</a>
@@ -22,9 +28,11 @@
             </td>
         </tr>
     }
-</table>
-<a asp-action="Create">Add Restaurant</a>
+</table>-->
 
+<div>
+    <a asp-action="Create">Add Restaurant</a>
+</div>
 @section footer {
     @Model.CurrentMessage
 }
