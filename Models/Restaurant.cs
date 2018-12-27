@@ -10,7 +10,7 @@ namespace OdeToFood2.Models
     {
         public int Id { get; set; }
 
-        [DisplayFormat(Name="Restaurant Name")]
+        [Display(Name="Restaurant Name")]
         [Required, MaxLength(80)]
         public string Name { get; set; }
 
