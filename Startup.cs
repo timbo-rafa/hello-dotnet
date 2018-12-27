@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -52,6 +53,7 @@ namespace OdeToFood2
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseRewriter( new RewriteOptions().AddRedirectToHttpsPermanent());
             //app.UseFileServer();
             //app.UseDefaultFiles();
             app.UseStaticFiles();
