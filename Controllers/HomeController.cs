@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OdeToFood2.Models;
 using OdeToFood2.Services;
 using OdeToFood2.ViewModels;
 
 namespace OdeToFood2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IRestaurantData _restaurantData;
@@ -18,6 +20,7 @@ namespace OdeToFood2.Controllers
         }
 
         //public string Index()
+        [AllowAnonymous]
         public IActionResult Index()
         {
             //var model = _restaurantData.GetAll();
